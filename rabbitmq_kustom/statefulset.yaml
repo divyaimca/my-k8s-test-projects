@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: rabbitmq
+  name: rabbitmq-sts
   namespace: testns-rabbitmq
 spec:
   replicas: 2
@@ -9,7 +9,8 @@ spec:
     matchLabels:
       app: "rabbitmq"
   # headless service that gives network identity to the RMQ nodes, and enables them to cluster
-  serviceName: rabbitmq-headless # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where "pod-specific-string" is managed by the StatefulSet controller.
+  serviceName: rabbitmq-console
+  # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where "pod-specific-string" is managed by the StatefulSet controller.
   volumeClaimTemplates:
   - metadata:
       name: rabbitmq-data
@@ -64,12 +65,6 @@ spec:
         persistentVolumeClaim:
           claimName: rabbitmq-data
       serviceAccount: rabbitmq
-      # The Docker image runs as the `rabbitmq` user with uid 999 
-      # and writes to the `rabbitmq.conf` file
-      # The security context is needed since the image needs
-      # permission to write to this file. Without the security 
-      # context, `rabbitmq.conf` is owned by root and inaccessible
-      # by the `rabbitmq` user
       securityContext:
         fsGroup: 999
         runAsUser: 999
@@ -115,25 +110,12 @@ spec:
           protocol: TCP
         livenessProbe:
           exec:
-            # This is just an example. There is no "one true health check" but rather
-            # several rabbitmq-diagnostics commands that can be combined to form increasingly comprehensive
-            # and intrusive health checks.
-            # Learn more at https://www.rabbitmq.com/monitoring.html#health-checks.
-            #
-            # Stage 2 check:
             command: ["rabbitmq-diagnostics", "status"]
           initialDelaySeconds: 60
-          # See https://www.rabbitmq.com/monitoring.html for monitoring frequency recommendations.
           periodSeconds: 60
           timeoutSeconds: 15
         readinessProbe: # probe to know when RMQ is ready to accept traffic
           exec:
-            # This is just an example. There is no "one true health check" but rather
-            # several rabbitmq-diagnostics commands that can be combined to form increasingly comprehensive
-            # and intrusive health checks.
-            # Learn more at https://www.rabbitmq.com/monitoring.html#health-checks.
-            #
-            # Stage 1 check:
             command: ["rabbitmq-diagnostics", "ping"]
           initialDelaySeconds: 20
           periodSeconds: 60

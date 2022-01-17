@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: rabbitmq-server
+  name: rabbitmq-ingress
   annotations:
     ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
@@ -13,14 +13,6 @@ spec:
     http:
       paths:
         - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: rabbitmq-client
-              port:
-                number: 5672
-          
-        - path: /ui
           pathType: Prefix
           backend:
             service:

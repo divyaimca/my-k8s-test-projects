@@ -1,0 +1,42 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: testns-rabbitmq
+  name: rabbitmq-console
+  labels:
+    app: rabbitmq
+    type: LoadBalancer
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 15672
+    - name: amqp
+      protocol: TCP
+      port: 5672
+  selector:
+    app: rabbitmq
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-cluster
+  namespace: testns-rabbitmq
+spec:
+  clusterIP: None
+  ports:
+  - name: epmd
+    port: 4369
+    protocol: TCP
+    targetPort: 4369
+  - name: cluster-rpc
+    port: 25672
+    protocol: TCP
+    targetPort: 25672
+  selector:
+    app: rabbitmq
+  type: ClusterIP
+  sessionAffinity: None
+
+    
