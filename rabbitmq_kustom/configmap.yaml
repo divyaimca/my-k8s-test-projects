@@ -18,4 +18,3 @@ data:
     cluster_partition_handling = autoheal
     queue_master_locator=min-masters
     loopback_users.guest = false
-    listeners.tcp.default = 5672
