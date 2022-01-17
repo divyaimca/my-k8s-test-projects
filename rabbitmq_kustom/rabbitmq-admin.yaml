@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rabbitmq-admin
+  namespace: testns-rabbitmq
+type: Opaque
+data:
+  user: YWRtaW5pc3RyYXRvcg==
+  pass: ZzNOM3JBdEVELVBhNjYydzByZA==
+  erlang-cookie: ZzNOM3JBdEVELVBhNjYydzByZA==

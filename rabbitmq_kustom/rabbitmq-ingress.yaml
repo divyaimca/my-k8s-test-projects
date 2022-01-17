@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rabbitmq-server
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    kubernetes.io/ingress.class: nginx
+  namespace: argocd
+spec:
+  rules:
+  - host: rabbitmq.k8s.local
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: rabbitmq-client
+              port:
+                number: 5672
+          
+        - path: /ui
+          pathType: Prefix
+          backend:
+            service:
+              name: rabbitmq-client
+              port:
+                number: 15672
+          
+   
+          
+     
+   
