@@ -16,7 +16,7 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: rabbitmq-client
+              name: rabbitmq-console
               port:
                 number: 15672
           
