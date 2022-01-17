@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: "rabbitmq"
   # headless service that gives network identity to the RMQ nodes, and enables them to cluster
-  serviceName: rabbitmq-console
+  serviceName: rabbitmq-cluster
   # serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where "pod-specific-string" is managed by the StatefulSet controller.
   volumeClaimTemplates:
   - metadata:
