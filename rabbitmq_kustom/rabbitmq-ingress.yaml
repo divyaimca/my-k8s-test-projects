@@ -6,7 +6,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     kubernetes.io/ingress.class: nginx
-  namespace: argocd
+  namespace: testns-rabbitmq
 spec:
   rules:
   - host: rabbitmq.k8s.local
