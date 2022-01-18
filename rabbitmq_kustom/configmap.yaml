@@ -19,3 +19,7 @@ data:
     queue_master_locator=min-masters
     loopback_users.guest = false
     listeners.tcp.default = 5672
+    cluster_formation.randomized_startup_delay_range.min = 0
+    cluster_formation.randomized_startup_delay_range.max = 2
+    cluster_formation.k8s.service_name = rabbitmq-cluster
+    cluster_formation.k8s.hostname_suffix = .rabbitmq-cluster.testns-rabbitmq.svc.cluster.local
