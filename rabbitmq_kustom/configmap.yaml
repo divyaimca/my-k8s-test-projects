@@ -9,10 +9,6 @@ data:
   rabbitmq.conf: |
     cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s
     cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
-    cluster_formation.k8s.port = 443
-    cluster_formation.k8s.token_path = /var/run/secrets/kubernetes.io/serviceaccount/token
-    cluster_formation.k8s.cert_path = /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-    cluster_formation.k8s.namespace_path = /var/run/secrets/kubernetes.io/serviceaccount/namespace
     log.file.level = debug
     log.console = true
     log.console.level = debug
