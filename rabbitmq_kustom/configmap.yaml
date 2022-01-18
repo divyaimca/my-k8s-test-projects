@@ -13,7 +13,7 @@ data:
     log.file.level = debug
     log.console = true
     log.console.level = debug
-    cluster_formation.k8s.address_type = ip
+    cluster_formation.k8s.address_type = host
     cluster_formation.node_cleanup.interval = 30
     cluster_formation.node_cleanup.only_log_warning = true
     cluster_partition_handling = autoheal
