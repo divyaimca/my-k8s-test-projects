@@ -8,7 +8,7 @@ data:
     [rabbitmq_federation, rabbitmq_peer_discovery_k8s, rabbitmq_management].
   rabbitmq.conf: |
     cluster_formation.peer_discovery_backend  = rabbit_peer_discovery_k8s
-    cluster_formation.k8s.host = kubernetes.default.svc
+    cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
     cluster_formation.k8s.port = 443
     cluster_formation.k8s.token_path = /var/run/secrets/kubernetes.io/serviceaccount/token
     cluster_formation.k8s.cert_path = /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
@@ -22,3 +22,4 @@ data:
     cluster_partition_handling = autoheal
     queue_master_locator=min-masters
     loopback_users.guest = false
+    listeners.tcp.default = 5672
