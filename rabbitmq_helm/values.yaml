@@ -875,7 +875,7 @@ ingress:
 
   ## @param ingress.hostname Default host for the ingress resource
   ##
-  hostname: rabbitmq.k8s-ingress.local
+  hostname: rabbitcls1.local.dev
 
   ## @param ingress.annotations Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.
   ## For a full list of possible ingress annotations, please see

@@ -9,7 +9,7 @@ metadata:
   namespace: testns-rabbitmq
 spec:
   rules:
-  - host: rabbitmq.k8s.local
+  - host: rabbitcls2.local.dev
     http:
       paths:
         - path: /
