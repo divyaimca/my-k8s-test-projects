@@ -15,19 +15,14 @@ brew install argocd
 
 ## Install nginx controller
 
-helm upgrade --install ingress-nginx ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --namespace ingress-nginx --create-namespace
+helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
   
 ## check nginx pods
 
 kubectl get pods --namespace=ingress-nginx
 
 ## wait for nginx pod creation complete 
-kubectl wait --namespace ingress-nginx \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/component=controller \
-  --timeout=120s
+kubectl wait --namespace ingress-nginx --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s
   
 ## Local testing with a dummy deployments
 
@@ -37,8 +32,7 @@ kubectl expose deployment demo
 
 ## Expose via ingress
 
-kubectl create ingress demo-localhost --class=nginx \
-  --rule=demo.localdev.me/*=demo:80
+kubectl create ingress demo-localhost --class=nginx --rule=demo.localdev.me/*=demo:80
   
 ## Access the above domain url : demo.localdev.me
 
