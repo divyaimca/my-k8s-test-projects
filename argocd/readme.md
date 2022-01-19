@@ -21,7 +21,7 @@ helm upgrade --install ingress-nginx ingress-nginx \
   
 ## check nginx pods
 
-get pods --namespace=ingress-nginx
+kubectl get pods --namespace=ingress-nginx
 
 ## wait for nginx pod creation complete 
 kubectl wait --namespace ingress-nginx \
@@ -32,6 +32,7 @@ kubectl wait --namespace ingress-nginx \
 ## Local testing with a dummy deployments
 
 kubectl create deployment demo --image=httpd --port=80
+
 kubectl expose deployment demo
 
 ## Expose via ingress
