@@ -41,6 +41,23 @@ spec:
         - cp /tmp/rabbitmq/rabbitmq.conf /etc/rabbitmq/rabbitmq.conf && echo '' >> /etc/rabbitmq/rabbitmq.conf;
           cp /tmp/rabbitmq/enabled_plugins /etc/rabbitmq/enabled_plugins
       volumes:
+      - name: inter-node-config 
+        configMap:
+          defaultMode: 420
+          name: mtls-inter-node-tls-config 
+      - name: mtls-inter-node-nodes-tls
+        secret:
+          secretName: rabbitmq-mtls-inter-node-nodes-tls
+          items:
+          - key: ca.crt
+            mode: 416
+            path: ca_certificate.pem
+          - key: tls.crt
+            mode: 416
+            path: server_certificate.pem
+          - key: tls.key
+            mode: 416
+            path: server_key.pem
       - name: rabbitmq-config
         configMap:
           name: rabbitmq-config
@@ -65,15 +82,24 @@ spec:
         image: rabbitmq:latest  
         imagePullPolicy: IfNotPresent
         volumeMounts:
+        - mountPath: /etc/rabbitmq/certs
+          name: mtls-inter-node-nodes-tls
         - name: rabbitmq-config-rw
           mountPath: "/etc/rabbitmq"
         - name: rabbitmq-data
           mountPath: "/var/lib/rabbitmq/mnesia"
+        - name: inter-node-config
+          mountPath: /etc/rabbitmq/inter-node-tls.config
+          subPath: inter_node_tls.config      
         env:
         - name: HOSTNAME
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: SERVER_ADDITIONAL_ERL_ARGS
+          value: "-proto_dist inet_tls -ssl_dist_optfile /etc/rabbitmq/inter-node-tls.config"
+        - name: RABBITMQ_CTL_ERL_ARGS
+          value: "-proto_dist inet_tls -ssl_dist_optfile /etc/rabbitmq/inter-node-tls.config"
         - name: RABBITMQ_USE_LONGNAME
           value: "true"
         - name: RABBITMQ_NODENAME
@@ -94,11 +120,17 @@ spec:
               name: rabbitmq-admin
               key: erlang-cookie
         ports:
+        - name: amqp-ssl
+          containerPort: 5671    
+          protocol: TCP
         - name: amqp
           containerPort: 5672
           protocol: TCP
         - name: management
           containerPort: 15672
+          protocol: TCP
+        - name: dist 
+          containerPort: 25672
           protocol: TCP
         - name: epmd
           containerPort: 4369

@@ -23,3 +23,9 @@ data:
     cluster_formation.randomized_startup_delay_range.max = 2
     cluster_formation.k8s.service_name = rabbitmq-cluster
     cluster_formation.k8s.hostname_suffix = .rabbitmq-cluster.testns-rabbitmq.svc.cluster.local
+    ssl_options.verify = verify_peer
+    listeners.ssl.default = 5671
+    ssl_options.fail_if_no_peer_cert = true
+    ssl_options.cacertfile = /etc/rabbitmq/certs/ca_certificate.pem
+    ssl_options.certfile = /etc/rabbitmq/certs/server_certificate.pem
+    ssl_options.keyfile = /etc/rabbitmq/certs/server_key.pem
