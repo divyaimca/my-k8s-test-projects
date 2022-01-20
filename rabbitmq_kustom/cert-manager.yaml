@@ -1,0 +1,77 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: rabbitmq
+  namespace: testns-rabbitmq
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rabbitmq-selfsigned-ca
+  namespace: testns-rabbitmq
+spec:
+  isCA: true
+  commonName: rabbitmq-selfsigned-ca
+  secretName: rabbitmq-selfsigned-ca-root-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: rabbitmq
+    kind: Issuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: rabbitmq-ca-issuer
+  namespace: testns-rabbitmq
+spec:
+  ca:
+    secretName: rabbitmq-selfsigned-ca-root-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rabbitmq-tls-secret
+  namespace: testns-rabbitmq
+spec:
+  dnsNames:
+    - "*.rabbitmq-cluster.testns-rabbitmq.svc.cluster.local"
+  secretName: rabbitmq-tls-secret
+  issuerRef:
+    kind: Issuer
+    name: rabbitmq
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: rabbitmq-mtls-inter-node-nodes-tls
+  namespace: testns-rabbitmq
+spec:
+  secretName: rabbitmq-mtls-inter-node-nodes-tls
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+    - RabbitMQ
+  commonName: mtls-inter-node
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - rabbitmq-server-0.rabbitmq-cluster.testns-rabbitmq
+  - rabbitmq-server-1.rabbitmq-cluster.testns-rabbitmq
+  - rabbitmq-server-2.rabbitmq-cluster.testns-rabbitmq
+  issuerRef:
+    name: rabbitmq-ca-issuer
+    kind: Issuer
+    group: cert-manager.io

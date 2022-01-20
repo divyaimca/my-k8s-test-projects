@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: rabbitmq-sts
+  name: rabbitmq-server
   namespace: testns-rabbitmq
 spec:
   replicas: 3
