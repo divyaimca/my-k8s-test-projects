@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-errors
+  namespace: ingress-nginx
   labels:
     app.kubernetes.io/name: nginx-errors
     app.kubernetes.io/part-of: ingress-nginx
@@ -19,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-errors
+  namespace: ingress-nginx
   labels:
     app.kubernetes.io/name: nginx-errors
     app.kubernetes.io/part-of: ingress-nginx
@@ -52,12 +54,12 @@ spec:
         # - name: DEBUG
         #   value: "true"
         volumeMounts:
-        - name: custom_error_page_vol
+        - name: custom-error-page-vol
           mountPath: /www
       volumes:
-      - name: custom_error_page_vol
+      - name: custom-error-page-vol
         configMap:
-          name: custom_error_pages
+          name: custom-default-backend-error-pages
           items:
           - key: "404"
             path: "404.html"

@@ -3,7 +3,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: custom_error_pages
+  name: custom-default-backend-error-pages
+  namespace: ingress-nginx
 data:
   404: |
    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
