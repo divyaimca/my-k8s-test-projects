@@ -52,12 +52,12 @@ spec:
         # - name: DEBUG
         #   value: "true"
         volumeMounts:
-        - name: custom_error_page_vol
+        - name: custom-error-page-vol
           mountPath: /www
       volumes:
-      - name: custom_error_page_vol
+      - name: custom-error-page-vol
         configMap:
-          name: custom_error_pages
+          name: custom-default-backend-error-pages
           items:
           - key: "404"
             path: "404.html"
