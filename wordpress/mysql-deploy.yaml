@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+  namespace: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        resources: 
+          requests: 
+            cpu: "0.5"
+            memory: "500Mi" 
+        ports:
+        - containerPort: 3306
+          name: mysql
+        envFrom:
+        - configMapRef:
+            name: env-configs 
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-pass
+                key: password
+        volumeMounts:
+        - mountPath: "/var/lib/mysql"
+          name: mysql-persistent-storage
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-persistent-storage

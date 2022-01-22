@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wordpress
+  name: wordpress
+  namespace: wordpress
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wordpress
+  strategy: 
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - image: wordpress
+        name: wordpress
+        resources: 
+          requests: 
+            cpu: "0.2"
+            memory: "100Mi"
+        ports:
+        - containerPort: 80
+          name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        volumeMounts:
+        - mountPath: "/var/www/html"
+          name: wordpress-persistent-storage
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wordpress-persistent-storage
