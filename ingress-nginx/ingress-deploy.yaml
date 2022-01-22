@@ -334,7 +334,7 @@ spec:
                   - /wait-shutdown
           args:
             - /nginx-ingress-controller
-            - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
+            - --default-backend-service=$(POD_NAMESPACE)/nginx-errors
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller
             - --election-id=ingress-controller-leader
             - --controller-class=k8s.io/ingress-nginx
