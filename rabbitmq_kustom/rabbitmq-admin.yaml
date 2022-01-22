@@ -5,6 +5,6 @@ metadata:
   namespace: testns-rabbitmq
 type: Opaque
 data:
-  user: YWRtaW4K
-  pass: YWRtaW4K
-  erlang-cookie: YWRtaW4K
+  user: YWRtaW5pc3RyYXRvcg==
+  pass: ZzNOM3JBdEVELVBhNjYydzByZA==
+  erlang-cookie: ZzNOM3JBdEVELVBhNjYydzByZA==
