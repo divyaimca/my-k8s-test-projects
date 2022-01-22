@@ -9,7 +9,7 @@ metadata:
   namespace: testns-rabbitmq
 spec:
   rules:
-  - host: rabbitcls2.local.dev
+  - host: rabbitmq.k8s.local
     http:
       paths:
         - path: /
@@ -19,3 +19,8 @@ spec:
               name: rabbitmq-console
               port:
                 number: 15672
+          
+   
+          
+     
+   
