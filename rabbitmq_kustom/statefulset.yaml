@@ -120,9 +120,9 @@ spec:
               name: rabbitmq-admin
               key: erlang-cookie
         ports:
-        # - name: amqp-ssl
-        #   containerPort: 5671    
-        #   protocol: TCP
+        - name: amqp-ssl
+          containerPort: 5671    
+          protocol: TCP
         - name: amqp
           containerPort: 5672
           protocol: TCP
