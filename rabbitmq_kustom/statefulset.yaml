@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: rabbitmq-server
+  name: mtls-inter-node-server
   namespace: testns-rabbitmq
 spec:
   replicas: 3
@@ -84,13 +84,13 @@ spec:
         volumeMounts:
         - mountPath: /etc/rabbitmq/certs
           name: mtls-inter-node-nodes-tls
+        - name: inter-node-config
+          mountPath: /etc/rabbitmq/inter-node-tls.config
+          subPath: inter_node_tls.config
         - name: rabbitmq-config-rw
           mountPath: "/etc/rabbitmq"
         - name: rabbitmq-data
-          mountPath: "/var/lib/rabbitmq/mnesia"
-        - name: inter-node-config
-          mountPath: /etc/rabbitmq/inter-node-tls.config
-          subPath: inter_node_tls.config      
+          mountPath: "/var/lib/rabbitmq/mnesia"      
         env:
         - name: HOSTNAME
           valueFrom:

@@ -68,9 +68,9 @@ spec:
     - server auth
     - client auth
   dnsNames:
-  - rabbitmq-server-0.rabbitmq-cluster.testns-rabbitmq
-  - rabbitmq-server-1.rabbitmq-cluster.testns-rabbitmq
-  - rabbitmq-server-2.rabbitmq-cluster.testns-rabbitmq
+  - mtls-inter-node-server-0.rabbitmq-cluster.testns-rabbitmq
+  - mtls-inter-node-server-1.rabbitmq-cluster.testns-rabbitmq
+  - mtls-inter-node-server-2.rabbitmq-cluster.testns-rabbitmq
   issuerRef:
     name: rabbitmq-ca-issuer
     kind: Issuer
