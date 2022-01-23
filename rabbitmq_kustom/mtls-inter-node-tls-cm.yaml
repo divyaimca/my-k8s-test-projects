@@ -1,31 +1,31 @@
-# apiVersion: v1
-# data:
-#   inter_node_tls.config: |
-#     [
-#       {server, [
-#         {cacertfile, "/etc/rabbitmq/certs/ca_certificate.pem"},
-#         {certfile,   "/etc/rabbitmq/certs/server_certificate.pem"},
-#         {keyfile,    "/etc/rabbitmq/certs/server_key.pem"},
-#         {secure_renegotiate, true},
-#         {fail_if_no_peer_cert, true},
-#         {verify, verify_peer},
-#         {customize_hostname_check, [
-#           {match_fun, public_key:pkix_verify_hostname_match_fun(https)}
-#         ]}
-#       ]},
-#       {client, [
-#         {cacertfile, "/etc/rabbitmq/certs/ca_certificate.pem"},
-#         {certfile,   "/etc/rabbitmq/certs/server_certificate.pem"},
-#         {keyfile,    "/etc/rabbitmq/certs/server_key.pem"},
-#         {secure_renegotiate, true},
-#         {fail_if_no_peer_cert, true},
-#         {verify, verify_peer},
-#         {customize_hostname_check, [
-#           {match_fun, public_key:pkix_verify_hostname_match_fun(https)}
-#         ]}
-#       ]}
-#     ].
-# kind: ConfigMap
-# metadata:
-#   name: mtls-inter-node-tls-config
-#   namespace: testns-rabbitmq
+apiVersion: v1
+data:
+  inter_node_tls.config: |
+    [
+      {server, [
+        {cacertfile, "/etc/rabbitmq/certs/ca_certificate.pem"},
+        {certfile,   "/etc/rabbitmq/certs/server_certificate.pem"},
+        {keyfile,    "/etc/rabbitmq/certs/server_key.pem"},
+        {secure_renegotiate, true},
+        {fail_if_no_peer_cert, true},
+        {verify, verify_peer},
+        {customize_hostname_check, [
+          {match_fun, public_key:pkix_verify_hostname_match_fun(https)}
+        ]}
+      ]},
+      {client, [
+        {cacertfile, "/etc/rabbitmq/certs/ca_certificate.pem"},
+        {certfile,   "/etc/rabbitmq/certs/server_certificate.pem"},
+        {keyfile,    "/etc/rabbitmq/certs/server_key.pem"},
+        {secure_renegotiate, true},
+        {fail_if_no_peer_cert, true},
+        {verify, verify_peer},
+        {customize_hostname_check, [
+          {match_fun, public_key:pkix_verify_hostname_match_fun(https)}
+        ]}
+      ]}
+    ].
+kind: ConfigMap
+metadata:
+  name: mtls-inter-node-tls-config
+  namespace: testns-rabbitmq
