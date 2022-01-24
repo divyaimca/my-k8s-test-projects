@@ -4,5 +4,6 @@ metadata:
   name: tcp-services
   namespace: ingress-nginx
 data:
-  5672: "testns-rabitmq/rabbitmq-client:5672"
-  15672: "testns-rabitmq/rabbitmq-client:15672"
+  5672: "testns-rabitmq/rabbitmq-console:5672"
+  15672: "testns-rabitmq/rabbitmq-console:15672"
+  8080: "nsjenkins/jenkins:8080"
