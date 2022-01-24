@@ -17,10 +17,10 @@ spec:
     http:
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
           backend:
             service:
-              name: jenkins
+              name: jenkins-http
               port:
                 number: 8080
           
