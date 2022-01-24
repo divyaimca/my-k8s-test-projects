@@ -5,7 +5,7 @@ metadata:
   labels:
     name: "jenkins"
 spec:
-  type: LoadBalancer
+  type: CusterIP
   ports:
     - port: 8080
       targetPort: 8080
