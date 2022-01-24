@@ -2,11 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jenkins-ingress
-<<<<<<< HEAD
-=======
   labels:
     name: "jenkins"
->>>>>>> bf172be17a981492e2524c140cf15099a0433422
   annotations:
     ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
