@@ -21,7 +21,6 @@ spec:
   template:
     metadata:
       name: rabbitmq
-      namespace: testns-rabbitmq
       labels:
         app: rabbitmq
     spec:
