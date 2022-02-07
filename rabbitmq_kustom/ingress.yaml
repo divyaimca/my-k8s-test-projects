@@ -8,7 +8,6 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/default-backend: ingress-nginx/nginx-errors
     nginx.ingress.kubernetes.io/custom-http-errors: "403,404,500,502,503,504"
-  namespace: testns-rabbitmq
 spec:
   rules:
   - host: rabbitmq.k8s.local
