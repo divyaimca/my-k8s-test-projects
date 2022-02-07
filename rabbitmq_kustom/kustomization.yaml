@@ -12,7 +12,7 @@ resources:
 - statefulset.yaml
 - service.yaml
 - ingress.yaml
-- exposetcp-ingress.yaml
+#- exposetcp-ingress.yaml
 images:
 - name: rabbitmq-cluster-svc-img
   newName: rabbitmq
