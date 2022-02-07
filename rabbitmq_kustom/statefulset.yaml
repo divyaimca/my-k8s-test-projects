@@ -79,7 +79,7 @@ spec:
         runAsGroup: 999
       containers:
       - name: rabbitmq
-        image: rabbitmq:latest  
+        image: rabbitmq-cluster-svc-img  
         imagePullPolicy: IfNotPresent
         volumeMounts:
         # - mountPath: /etc/rabbitmq/certs
