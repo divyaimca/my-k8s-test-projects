@@ -4,5 +4,5 @@ metadata:
   name: tcp-services
   namespace: ingress-nginx
 data:
-  5672: "testns-rabitmq/rabbitmq-client:5672"
-  15672: "testns-rabitmq/rabbitmq-client:15672"
+  5672: "nsrabbitmqcls01/rabbitmq-client:5672"
+  15672: "nsrabbitmqcls01/rabbitmq-client:15672"
