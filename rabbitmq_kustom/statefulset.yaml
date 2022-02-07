@@ -101,7 +101,7 @@ spec:
         - name: RABBITMQ_USE_LONGNAME
           value: "true"
         - name: RABBITMQ_NODENAME
-          value: "rabbit@$(HOSTNAME).rabbitmq-cluster.testns-rabbitmq.svc.cluster.local"
+          value: "rabbit@$(HOSTNAME).rabbitmq-cluster.nsrabbitmqcls01.svc.cluster.local"
         - name: RABBITMQ_DEFAULT_PASS
           valueFrom:
             secretKeyRef:
@@ -147,4 +147,4 @@ spec:
           timeoutSeconds: 10
       dnsConfig:
           searches:
-            - rabbitmq-cluster.testns-rabbitmq.svc.cluster.local
+            - rabbitmq-cluster.nsrabbitmqcls01.svc.cluster.local
