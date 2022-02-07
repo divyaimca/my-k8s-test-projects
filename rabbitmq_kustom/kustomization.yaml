@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app: rabbitmq-cluster-svc
+  app.kubernetes.io/managed-by: kustomize
+  app.kubernetes.io/name: rabbitmq-cluster-svc
+resources:
+- namespace.yaml
+- rbac.yaml
+- configmap.yaml
+- secret.yaml
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
+- exposetcp-ingress.yaml
+images:
+- name: rabbitmq-cluster-svc
+  newName: busybox
+  newTag: 1.32.0
