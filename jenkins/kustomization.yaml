@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nsjenkins
+commonLabels:
+  app: jenkins-svc
+  app.kubernetes.io/managed-by: kustomize
+  app.kubernetes.io/name: jenkins-svc
+resources:
+- namespace.yaml
+- jenkins-pvc.yaml
+- jenkins-deploy.yaml
+- jenkins-svc.yaml
+- jenkins-ingress.yaml
