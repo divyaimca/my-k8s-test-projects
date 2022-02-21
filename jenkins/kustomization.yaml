@@ -7,6 +7,7 @@ commonLabels:
   app.kubernetes.io/name: jenkins-svc
 resources:
 - namespace.yaml
+- jenkins-service-account.yaml
 - jenkins-pvc.yaml
 - jenkins-deploy.yaml
 - jenkins-svc.yaml
