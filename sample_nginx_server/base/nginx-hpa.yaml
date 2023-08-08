@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: nginx-svc
+  name: nginx-deployment
 spec:
   maxReplicas: 3
   minReplicas: 2
@@ -20,7 +20,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: tenant-metadata-svc
+    name: nginx-deployment
   metrics:
     - type: Resource
       resource:
