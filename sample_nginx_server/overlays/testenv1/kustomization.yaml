@@ -19,10 +19,10 @@ patches:
   patch: |-
     - op: replace
       path: /spec/minReplicas
-      value: 2
+      value: 3
     - op: replace
       path: /spec/maxReplicas
-      value: 3
+      value: 4
 images:
 - name: nginx-image
   newName: nginx
