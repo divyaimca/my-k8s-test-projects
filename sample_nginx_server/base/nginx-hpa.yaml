@@ -1,0 +1,36 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-svc
+spec:
+  maxReplicas: 3
+  minReplicas: 2
+  behavior:
+    scaleUp:
+      policies:
+        - type: Percent
+          value: 200
+          periodSeconds: 300
+    scaleDown:
+      stabilizationWindowSeconds: 150
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 300
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: tenant-metadata-svc
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 75
