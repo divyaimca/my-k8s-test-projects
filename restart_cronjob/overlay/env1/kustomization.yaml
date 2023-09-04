@@ -12,7 +12,7 @@ patches:
   patch: |-
     - op: replace
       path: /spec/schedule
-      value: '*/2 0 * * *' 
+      value: '*/2 * * * *' 
 images:
 - name: nginx-image
   newName: nginx
