@@ -21,4 +21,4 @@ spec:
                 - 'kubectl'
                 - 'rollout'
                 - 'restart'
-                - 'deployment/${DEPLOYMENT}'
+                - 'deployment/nginx-deployment'
