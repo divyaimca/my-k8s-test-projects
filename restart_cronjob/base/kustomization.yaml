@@ -8,7 +8,6 @@ resources:
 - roles.yaml
 - service_account.yaml
 - restart_cronJob.yaml
-- kustomization.yaml
 images:
 - name: kubectl
   newName: bitnami/kubectl
