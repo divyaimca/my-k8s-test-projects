@@ -13,13 +13,13 @@ patches:
     - op: replace
       path: /spec/schedule
       value: '*/2 * * * *' 
-    - op: replace
-      path: /spec/jobTemplate/spec/template/spec/containers/command
-      value: |-
-         - 'kubectl'
-         - 'rollout'
-         - 'restart'
-         - 'deployment/nginx-deployment'
+    # - op: replace
+    #   path: /spec/jobTemplate/spec/template/spec/containers/command
+    #   value: 
+    #      - 'kubectl'
+    #      - 'rollout'
+    #      - 'restart'
+    #      - 'deployment/nginx-deployment'
 images:
 - name: nginx-image
   newName: nginx
