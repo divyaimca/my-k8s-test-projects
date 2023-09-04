@@ -5,6 +5,14 @@ bases:
   - ../../base
 commonLabels:
   env: test
+patches:
+- target:
+    kind: CronJob
+    name: deployment-restart-job
+  patch: |-
+    - op: replace
+      path: /spec/schedule
+      value: '*/2 0 * * *' 
 images:
 - name: nginx-image
   newName: nginx
