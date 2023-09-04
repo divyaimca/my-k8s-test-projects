@@ -10,4 +10,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: deployment-restart-sa 
-    apiGroup: rbac.authorization.k8s.io
+    namespace: [""]
