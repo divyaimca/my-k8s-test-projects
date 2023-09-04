@@ -10,4 +10,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: deployment-restart-sa 
-    namespace: [""]
+    namespace: ["nginx-deployment1", "nginx-deployment1"]
