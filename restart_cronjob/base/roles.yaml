@@ -1,8 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   name: deployment-restart-job-role
-  namespace: restart-job
 rules:
   - apiGroups: ["apps", "extensions"]
     resources: ["deployments"]
