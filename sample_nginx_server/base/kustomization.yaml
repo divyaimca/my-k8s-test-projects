@@ -8,7 +8,7 @@ resources:
 - nginx-hpa.yaml
 - nginx-svc.yaml
 - nginx-ingress.yaml
-- sa.yaml
+#- sa.yaml
 images:
 - name: nginx-image
   newName: nginx
