@@ -6,7 +6,9 @@ resources:
 commonLabels:
   env: test
 patchesStrategicMerge:
-  - cronjob.yaml  
+   - configmap.yaml
+   - appdatajob.yaml
+#  - cronjob.yaml  
 # patches:
 # - target:
 #     kind: CronJob
