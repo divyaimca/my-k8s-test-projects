@@ -2,6 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: k8s-argocd-apps-reload
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 #  namespace: nstest1
 spec:
   #successfulJobsHistoryLimit: 1
