@@ -6,13 +6,13 @@ bases:
 commonLabels:
   env: test
 patches:
-- target:
-    kind: Ingress
-    name: nginx-deployment
-  patch: |-
-    - op: replace
-      path: /spec/rules/0/host
-      value: nginx-env1.k8s.local
+# - target:
+#     kind: Ingress
+#     name: nginx-deployment
+#   patch: |-
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: nginx-env1.k8s.local
 - target:
     kind: HorizontalPodAutoscaler
     name: nginx-deployment
