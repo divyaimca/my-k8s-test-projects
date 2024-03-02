@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: k8s-argocd-apps-reload
+spec:
+  jobTemplate:
+    spec:
+      backoffLimit: 2 
+      activeDeadlineSeconds: 600 
+      template:
+        spec:
+          serviceAccountName: k8s-argocd-apps-reload
+          restartPolicy: Never
+          containers:
+            env:
+                - name: SERVICE_NAMES
+                  valueFrom:
+                    configMapKeyRef:
+                      name: k8s-argocd-apps-reload
+                      key: service_to_reload
+            - name: kubectl
+              image: bitnami/kubectl 
+              command:
+                - 'kubectl'
+                - 'rollout'
+                - 'restart'
+                - 'deployment/test'
