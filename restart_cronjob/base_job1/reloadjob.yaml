@@ -1,5 +1,5 @@
 apiVersion: batch/v1
-kind: CronJob
+kind: Job
 metadata:
   name: k8s-argocd-apps-reload
 #  namespace: nstest1
