@@ -18,14 +18,14 @@ spec:
           serviceAccountName: k8s-argocd-apps-reload
           restartPolicy: Never
           containers:
+            - name: kubectl
+              image: bitnami/kubectl 
               env:
                 - name: SERVICE_NAMES
                   valueFrom:
                     configMapKeyRef:
                       name: k8s-argocd-apps-reload
                       key: service_to_reload
-            - name: kubectl
-              image: bitnami/kubectl 
               command:
                 - 'kubectl'
                 - 'rollout'
