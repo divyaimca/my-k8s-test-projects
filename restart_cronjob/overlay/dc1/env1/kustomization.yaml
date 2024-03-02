@@ -7,7 +7,7 @@ commonLabels:
   env: test
 patchesStrategicMerge:
    - appconfig.yaml
-   - appdatajob.yaml
+#   - appdatajob.yaml
 #  - cronjob.yaml  
 # patches:
 # - target:
