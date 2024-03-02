@@ -9,3 +9,4 @@ metadata:
 data:
   service_to_reload: |
     - nginx-deployment
+    - test-deploy
