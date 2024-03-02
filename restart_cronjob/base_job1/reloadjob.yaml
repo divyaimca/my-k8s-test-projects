@@ -4,30 +4,28 @@ metadata:
   name: k8s-argocd-apps-reload
 #  namespace: nstest1
 spec:
-  successfulJobsHistoryLimit: 1
-  failedJobsHistoryLimit: 2
-  concurrencyPolicy: Forbid
-  jobTemplate:
+  # successfulJobsHistoryLimit: 1
+  # failedJobsHistoryLimit: 2
+  # concurrencyPolicy: Forbid
+  template:
     spec:
-      parallelism: 1
-      completions: 1
-      backoffLimit: 2 
-      activeDeadlineSeconds: 300 
-      template:
-        spec:
-          serviceAccountName: k8s-argocd-apps-reload
-          restartPolicy: Never
-          containers:
-            - name: kubectl
-              image: bitnami/kubectl 
-              env:
-                - name: SERVICE_NAMES
-                  valueFrom:
-                    configMapKeyRef:
-                      name: k8s-argocd-apps-reload
-                      key: service_to_reload
-              command: ["echo"]
-              args: ["$(SERVICE_NAMES)"]        
+      # parallelism: 1
+      # completions: 1
+      # backoffLimit: 2 
+      # activeDeadlineSeconds: 300
+      serviceAccountName: k8s-argocd-apps-reload
+      restartPolicy: Never
+      containers:
+      - name: kubectl
+        image: bitnami/kubectl 
+        env:
+            - name: SERVICE_NAMES
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-argocd-apps-reload
+                  key: service_to_reload
+        command: ["echo"]
+        args: ["$(SERVICE_NAMES)"]        
               # command:
               #   - 'kubectl'
               #   - 'rollout'
