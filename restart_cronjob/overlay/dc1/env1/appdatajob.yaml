@@ -8,5 +8,5 @@ spec:
       template:
         spec:
           containers:
-              command:
-                - ['echo', '$SERVICE_NAMES']
+              command: ["echo"]
+              args: ["$(SERVICE_NAMES)"]
