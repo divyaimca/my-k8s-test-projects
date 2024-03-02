@@ -16,3 +16,4 @@ spec:
                 - 'rollout'
                 - 'restart'
                 - 'deployment/nginx-deployment'
+                - '-n test1'
