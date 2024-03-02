@@ -1,1 +1,32 @@
-
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: k8s-argocd-apps-reload
+#  namespace: nstest1
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  concurrencyPolicy: Forbid
+  schedule: '0 * * * *'
+  jobTemplate:
+    spec:
+      backoffLimit: 2 
+      activeDeadlineSeconds: 600 
+      template:
+        spec:
+          serviceAccountName: k8s-argocd-apps-reload
+          restartPolicy: Never
+          containers:
+            env:
+                - name: SERVICE_NAMES
+                  valueFrom:
+                    configMapKeyRef:
+                      name: k8s-argocd-apps-reload
+                      key: service_to_reload
+            - name: kubectl
+              image: bitnami/kubectl 
+              command:
+                - 'kubectl'
+                - 'rollout'
+                - 'restart'
+                - 'deployment/test'
