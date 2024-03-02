@@ -6,11 +6,11 @@ metadata:
 spec:
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 2
-  concurrencyPolicy: Forbid
+  #concurrencyPolicy: Forbid
   template:
     spec:
-      parallelism: 1
-      completions: 1
+      #parallelism: 1
+      #completions: 1
       backoffLimit: 2 
       activeDeadlineSeconds: 300
       serviceAccountName: k8s-argocd-apps-reload
