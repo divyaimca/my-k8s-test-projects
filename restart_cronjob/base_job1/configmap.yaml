@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-argocd-apps-reload
+  labels:
+    app.kubernetes.io/name: k8s-argocd-apps-reload
+    app.kubernetes.io/instance: k8s-argocd-apps-reload
+    app.kubernetes.io/managed-by: Kustomize
+data:
+  service_to_reload: nginx-deployment
