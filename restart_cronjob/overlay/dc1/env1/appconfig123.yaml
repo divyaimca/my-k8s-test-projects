@@ -11,3 +11,4 @@ data:
     - nginx-deployment
     - test-deploy
     - test1-app
+    - test2-app
