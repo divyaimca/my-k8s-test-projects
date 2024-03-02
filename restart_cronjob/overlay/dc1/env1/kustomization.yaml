@@ -5,17 +5,19 @@ resources:
   - ../../../base_job1
 commonLabels:
   env: test
-patches:
-- target:
-    kind: CronJob
-    name: deployment-restart-job
-  patch: |-
-    - op: replace
-      path: /spec/schedule
-      value: '*/2 * * * *' 
-    - op: replace
-      path: /spec/jobTemplate/spec/template/spec/containers/command
-      value: ['kubectl','rollout','restart','deployment/nginx-deployment','-n', 'test1']
+patchesStrategicMerge:
+  - cronjob.yaml  
+# patches:
+# - target:
+#     kind: CronJob
+#     name: deployment-restart-job
+#   patch: |-
+#     - op: replace
+#       path: /spec/schedule
+#       value: '*/2 * * * *' 
+#     - op: replace
+#       path: /spec/jobTemplate/spec/template/spec/containers/command
+#       value: ['kubectl','rollout','restart','deployment/nginx-deployment','-n', 'test1']
 #images:
 #- name: nginx-image
 #  newName: nginx
