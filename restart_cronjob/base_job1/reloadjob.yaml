@@ -9,8 +9,10 @@ spec:
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
+      parallelism: 1
+      completions: 1
       backoffLimit: 2 
-      activeDeadlineSeconds: 600 
+      activeDeadlineSeconds: 300 
       template:
         spec:
           serviceAccountName: k8s-argocd-apps-reload
