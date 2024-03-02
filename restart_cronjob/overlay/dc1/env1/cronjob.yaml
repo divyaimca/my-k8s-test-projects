@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: k8s-argocd-apps-reload
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            command:
+                - 'kubectl'
+                - 'rollout'
+                - 'restart'
+                - 'deployment/nginx-deployment'
