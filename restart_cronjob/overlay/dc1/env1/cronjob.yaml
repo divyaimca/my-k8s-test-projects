@@ -3,13 +3,15 @@ kind: CronJob
 metadata:
   name: k8s-argocd-apps-reload
 spec:
-  schedule: "*/2 * * * *"
+  schedule: '0 * * * *'
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-            - command:
+            - name: kubectl
+              image: bitnami/kubectl 
+              command:
                 - 'kubectl'
                 - 'rollout'
                 - 'restart'
