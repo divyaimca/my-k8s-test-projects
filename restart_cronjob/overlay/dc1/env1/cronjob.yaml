@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: k8s-argocd-apps-reload
 spec:
-  schedule: '0 * * * *'
+  schedule: '*/2 * * * *'
   jobTemplate:
     spec:
       template:
