@@ -15,12 +15,7 @@ patches:
       value: '*/2 * * * *' 
     - op: replace
       path: /spec/jobTemplate/spec/template/spec/containers/command
-      value: 
-         - 'kubectl'
-         - 'rollout'
-         - 'restart'
-         - 'deployment/nginx-deployment'
-         - '-n test1'
+      value: ['kubectl','rollout','restart','deployment/nginx-deployment','-n', 'test1']
 #images:
 #- name: nginx-image
 #  newName: nginx
