@@ -3,10 +3,8 @@ kind: Job
 metadata:
   name: k8s-argocd-apps-reload
 spec:
-  jobTemplate:
+  template:
     spec:
-      template:
-        spec:
-          containers:
-              command: ["echo"]
-              args: ["$(SERVICE_NAMES)"]
+      containers:
+          command: ["echo"]
+          args: ["$(SERVICE_NAMES)"]
