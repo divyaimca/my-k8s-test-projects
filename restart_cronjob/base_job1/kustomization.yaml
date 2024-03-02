@@ -5,5 +5,5 @@ resources:
   - clusterrolebinding.yaml
   - serviceaccount.yaml
   - configmap.yaml
-  - cronjob.yaml
+  #- cronjob.yaml
   - reloadjob.yaml
