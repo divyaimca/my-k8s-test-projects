@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             command:
-                - 'kubectl'
-                - 'rollout'
-                - 'restart'
-                - 'deployment/nginx-deployment'
+              - 'kubectl'
+              - 'rollout'
+              - 'restart'
+              - 'deployment/nginx-deployment'
