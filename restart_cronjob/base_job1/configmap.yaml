@@ -7,5 +7,4 @@ metadata:
     app.kubernetes.io/instance: k8s-argocd-apps-reload
     app.kubernetes.io/managed-by: Kustomize
 data:
-  service_to_reload: |
-    - nginx-deployment
+  service_to_reload: nginx-deployment
