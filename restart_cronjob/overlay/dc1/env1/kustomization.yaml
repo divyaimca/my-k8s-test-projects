@@ -20,6 +20,7 @@ patches:
          - 'rollout'
          - 'restart'
          - 'deployment/nginx-deployment'
+         - '-n test1'
 #images:
 #- name: nginx-image
 #  newName: nginx
