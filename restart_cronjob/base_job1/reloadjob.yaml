@@ -4,15 +4,15 @@ metadata:
   name: k8s-argocd-apps-reload
 #  namespace: nstest1
 spec:
-  # successfulJobsHistoryLimit: 1
-  # failedJobsHistoryLimit: 2
-  # concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  concurrencyPolicy: Forbid
   template:
     spec:
-      # parallelism: 1
-      # completions: 1
-      # backoffLimit: 2 
-      # activeDeadlineSeconds: 300
+      parallelism: 1
+      completions: 1
+      backoffLimit: 2 
+      activeDeadlineSeconds: 300
       serviceAccountName: k8s-argocd-apps-reload
       restartPolicy: Never
       containers:
