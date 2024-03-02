@@ -26,8 +26,10 @@ spec:
                     configMapKeyRef:
                       name: k8s-argocd-apps-reload
                       key: service_to_reload
-              command:
-                - 'kubectl'
-                - 'rollout'
-                - 'restart'
-                - 'deployment/test'
+              command: ["echo"]
+              args: ["$(SERVICE_NAMES)"]        
+              # command:
+              #   - 'kubectl'
+              #   - 'rollout'
+              #   - 'restart'
+              #   - 'deployment/test'
