@@ -7,7 +7,7 @@ resources:
 - nginx-deployment.yaml
 - nginx-hpa.yaml
 - nginx-svc.yaml
-- nginx-ingress.yaml
+#- nginx-ingress.yaml
 #- sa.yaml
 images:
 - name: nginx-image
