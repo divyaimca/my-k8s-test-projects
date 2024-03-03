@@ -32,7 +32,7 @@ spec:
                   name: k8s-argocd-apps-reload
                   key: service_to_reload
         command: ["echo"]
-        args: ["$(SERVICE_NAMES)"]  
+        #args: ["$(SERVICE_NAMES)"]  
         volumeMounts:
           - mountPath: /work
             name: k8s-argocd-apps-reload
