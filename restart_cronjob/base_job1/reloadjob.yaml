@@ -34,7 +34,7 @@ spec:
         command: ["echo"]
         args: ["$(SERVICE_NAMES)"]  
         volumeMounts:
-          - mountPath: /k8s-argocd-apps-reload
+          - mountPath: /work
             name: k8s-argocd-apps-reload
               # command:
               #   - 'kubectl'
