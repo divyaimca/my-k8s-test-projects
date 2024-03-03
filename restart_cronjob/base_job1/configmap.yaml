@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/instance: k8s-argocd-apps-reload
     app.kubernetes.io/managed-by: Kustomize
 data:
-  test.sh: |-
+  test-script.sh: |-
     #!/bin/sh
     echo "*** readiness start to ping the redis ***"
     env
