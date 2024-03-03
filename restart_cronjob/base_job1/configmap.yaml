@@ -15,7 +15,7 @@ data:
     env
     kubectl get applications -n argocd
     pwd
-    whoami
+    python -v
     
   service_to_reload: |
     - nginx-deployment
