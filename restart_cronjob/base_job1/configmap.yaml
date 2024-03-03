@@ -11,10 +11,12 @@ metadata:
 data:
   test-script.sh: |-
     #!/bin/sh
-    echo "*** readiness start to ping the redis ***"
+    echo "*** Starting Reload Operation here ***"
     env
     kubectl get applications -n argocd
-    pwd
+    
+    
+    
     
   service_to_reload: |
     - nginx-deployment
