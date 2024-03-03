@@ -8,5 +8,5 @@ spec:
       containers:
         #command: ["echo"]
         #args: ["$(SERVICE_NAMES)"]
-        command: ['ls','-l','/work/']
+        command: ['ls','-l','/work']
           
