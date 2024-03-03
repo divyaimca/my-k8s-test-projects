@@ -15,5 +15,5 @@ data:
     env
     kubectl get applications -n argocd
 
-  service_to_reload: |
+  service_to_reload: 
     - nginx-deployment
