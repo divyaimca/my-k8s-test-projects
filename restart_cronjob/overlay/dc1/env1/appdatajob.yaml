@@ -6,5 +6,5 @@ spec:
   template:
     spec:
       containers:
-        command: ['ls','-l','/work']
+        command: ['ls','/work']
           
