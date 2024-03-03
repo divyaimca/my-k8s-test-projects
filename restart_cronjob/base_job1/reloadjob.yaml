@@ -9,9 +9,6 @@ spec:
   ttlSecondsAfterFinished: 300
   template:
     spec:
-      parallelism: 1
-      completions: 1
-      backoffLimit: 2 
       activeDeadlineSeconds: 300
       serviceAccountName: k8s-argocd-apps-reload
       restartPolicy: Never
