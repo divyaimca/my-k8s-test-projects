@@ -19,9 +19,9 @@ spec:
       serviceAccountName: k8s-argocd-apps-reload
       restartPolicy: Never
       volumes:
-      - name: test-script
+      - name: k8s-argocd-apps-reload
         configMap:
-          name: test-script
+          name: k8s-argocd-apps-reload
       containers:
       - name: kubectl
         image: bitnami/kubectl 
@@ -34,8 +34,8 @@ spec:
         command: ["echo"]
         args: ["$(SERVICE_NAMES)"]  
         volumeMounts:
-          - mountPath: /run
-            name: test-script
+          - mountPath: /k8s-argocd-apps-reload
+            name: k8s-argocd-apps-reload
               # command:
               #   - 'kubectl'
               #   - 'rollout'
