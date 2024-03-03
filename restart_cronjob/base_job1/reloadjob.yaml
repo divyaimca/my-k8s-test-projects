@@ -37,7 +37,9 @@ spec:
           - mountPath: /work
             name: k8s-argocd-apps-reload
         command:
-            - 'kubectl'
-            - 'rollout'
-            - 'restart'
-            - 'deployment/test'
+            - 'ls'
+            - '/work'
+            # - 'kubectl'
+            # - 'rollout'
+            # - 'restart'
+            # - 'deployment/test'
