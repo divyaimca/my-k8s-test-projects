@@ -6,5 +6,7 @@ spec:
   template:
     spec:
       containers:
-        command: ["echo"]
-        args: ["$(SERVICE_NAMES)"]
+        #command: ["echo"]
+        #args: ["$(SERVICE_NAMES)"]
+        command: ['ls','-l','/work/']
+          
