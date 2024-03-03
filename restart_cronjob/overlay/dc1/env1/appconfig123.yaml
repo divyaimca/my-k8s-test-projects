@@ -8,3 +8,5 @@ data:
     - k8s-web-app2
     - k8s-web-app3
     - k8s-web-app4
+    - k8s-web-app5
+    - k8s-web-app6
