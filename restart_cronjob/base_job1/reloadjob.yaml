@@ -31,13 +31,13 @@ spec:
                 configMapKeyRef:
                   name: k8s-argocd-apps-reload
                   key: service_to_reload
-        command: ["echo"]
+        #command: ["echo"]
         #args: ["$(SERVICE_NAMES)"]  
         volumeMounts:
           - mountPath: /work
             name: k8s-argocd-apps-reload
-              # command:
-              #   - 'kubectl'
-              #   - 'rollout'
-              #   - 'restart'
-              #   - 'deployment/test'
+        command:
+            - 'kubectl'
+            - 'rollout'
+            - 'restart'
+            - 'deployment/test'
