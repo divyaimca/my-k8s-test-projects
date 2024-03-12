@@ -17,8 +17,8 @@ spec:
         configMap:
           name: k8s-argocd-apps-reload
       containers:
-      - name: kubectl
-        image: bitnami/kubectl 
+      - name: pykube
+        image: localhost/python_kubectl:v1.0 
         env:
             - name: SERVICE_NAMES
               valueFrom:
@@ -30,10 +30,10 @@ spec:
         volumeMounts:
           - mountPath: /work
             name: k8s-argocd-apps-reload
-        command:
-            - 'sh'
-            - '/work/test-script.sh'
-            # - 'kubectl'
-            # - 'rollout'
-            # - 'restart'
-            # - 'deployment/test'
+        # command:
+        #     - 'sh'
+        #     - '/work/test-script.sh'
+        #     # - 'kubectl'
+        #     # - 'rollout'
+        #     # - 'restart'
+        #     # - 'deployment/test'
