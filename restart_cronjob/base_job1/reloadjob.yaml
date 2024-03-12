@@ -11,7 +11,7 @@ metadata:
 spec:
   #successfulJobsHistoryLimit: 2
   #failedJobsHistoryLimit: 2
-  ttlSecondsAfterFinished: 60
+  #ttlSecondsAfterFinished: 60
   #concurrencyPolicy: Forbid
   #startingDeadlineSeconds: 10
   template:
