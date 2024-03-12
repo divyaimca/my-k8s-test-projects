@@ -6,6 +6,8 @@ metadata:
     app.kubernetes.io/name: k8s-argocd-apps-reload
   annotations:
     argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   #successfulJobsHistoryLimit: 2
   #failedJobsHistoryLimit: 2
