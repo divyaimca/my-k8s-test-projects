@@ -4,6 +4,7 @@ metadata:
   name: k8s-argocd-apps-reload-config
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook: PostSync
   labels:
     app.kubernetes.io/name: k8s-argocd-apps-reload
     app.kubernetes.io/instance: k8s-argocd-apps-reload
