@@ -3,8 +3,6 @@ kind: Kustomization
 namespace: k8s-argocd-apps-reload
 resources:
   - ../../../base_job1
-  - appdatajob.yaml
-
 commonLabels:
   env: test
 patchesStrategicMerge:
