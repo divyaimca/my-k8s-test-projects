@@ -12,5 +12,5 @@ configMapGenerator:
     behavior: merge  
 images:
 - name: k8s-argocd-apps-reload
-  newName: priyadarshee2019/python_kubect
-  newTag: v2.0
+  newName: priyadarshee2019/python_kubectl
+  newTag: v3.0
