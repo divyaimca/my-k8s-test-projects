@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: k8s-argocd-apps-reload
+  name: k8s-argocd-apps-reload-config
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
@@ -9,10 +9,6 @@ metadata:
     app.kubernetes.io/instance: k8s-argocd-apps-reload
     app.kubernetes.io/managed-by: Kustomize
 data:
-  test-script.sh: |-
-    #!/bin/sh
-    echo "*** Starting Reload Operation here ***"
-    env
-    kubectl get applications -n argocd
-
+  dc_number: dc007
+  env_name: stage
   service_to_reload: nginx-deployment
