@@ -7,11 +7,11 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
-  successfulJobsHistoryLimit: 2
-  failedJobsHistoryLimit: 2
+  #successfulJobsHistoryLimit: 2
+  #failedJobsHistoryLimit: 2
   ttlSecondsAfterFinished: 300
-  concurrencyPolicy: Forbid
-  startingDeadlineSeconds: 10
+  #concurrencyPolicy: Forbid
+  #startingDeadlineSeconds: 10
   template:
     spec:
       activeDeadlineSeconds: 300
