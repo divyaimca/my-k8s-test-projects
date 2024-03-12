@@ -6,7 +6,7 @@ resources:
   - clusterrolebinding.yaml
   - configmap.yaml
   - reloadjob.yaml
-images:
-- name: k8s-argocd-apps-reload
-  newName: bitnami/kubectl
-  newTag: latest  
+# images:
+# - name: k8s-argocd-apps-reload
+#   newName: bitnami/kubectl
+#   newTag: latest  
