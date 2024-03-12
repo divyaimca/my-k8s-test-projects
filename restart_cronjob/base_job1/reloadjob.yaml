@@ -43,7 +43,7 @@ spec:
               memory: 1Gi
               cpu: 1000m  
           volumeMounts:
-          - name: k8s-argocd-apps-reload
+          - name: work
             mountPath: /work
           env:
             - name: SERVICE_NAMES
