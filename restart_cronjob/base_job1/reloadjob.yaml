@@ -2,38 +2,66 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: k8s-argocd-apps-reload
+  labels:
+    app.kubernetes.io/name: k8s-argocd-apps-reload
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-#  namespace: nstest1
 spec:
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
   ttlSecondsAfterFinished: 300
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 10
   template:
     spec:
       activeDeadlineSeconds: 300
       serviceAccountName: k8s-argocd-apps-reload
+      securityContext:
+        fsGroup: 2000
       restartPolicy: Never
-      volumes:
-      - name: k8s-argocd-apps-reload
-        configMap:
-          name: k8s-argocd-apps-reload
       containers:
-      - name: pykube
-        image: localhost/python_kubectl:v1.0 
-        env:
+        - name: k8s-argocd-apps-reload
+          image: k8s-argocd-apps-reload 
+          imagePullPolicy: Always
+          workingDir: /work
+          securityContext:
+            runAsUser: 2000
+            runAsGroup: 2000
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+            readOnlyRootFilesystem: true                 
+            capabilities:
+              add: []
+              drop:
+                - ALL
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+            limits:
+              memory: 1Gi
+              cpu: 1000m  
+          volumeMounts:
+          - name: k8s-argocd-apps-reload
+            mountPath: /work
+          env:
             - name: SERVICE_NAMES
               valueFrom:
                 configMapKeyRef:
-                  name: k8s-argocd-apps-reload
+                  name: k8s-argocd-apps-reload-config
                   key: service_to_reload
-        #command: ["echo"]
-        #args: ["$(SERVICE_NAMES)"]  
-        volumeMounts:
-          - mountPath: /work
-            name: k8s-argocd-apps-reload
-        # command:
-        #     - 'sh'
-        #     - '/work/test-script.sh'
-        #     # - 'kubectl'
-        #     # - 'rollout'
-        #     # - 'restart'
-        #     # - 'deployment/test'
+            - name: DC_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-argocd-apps-reload-config
+                  key: dc_number
+            - name: ENV_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: k8s-argocd-apps-reload-config
+                  key: env_name 
+      volumes:
+        - name: work
+          emptyDir: {}                 
+          
