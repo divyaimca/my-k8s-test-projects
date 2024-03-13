@@ -44,31 +44,31 @@ spec:
             limits:
               memory: 1Gi
               cpu: 1000m  
-          volumeMounts:
-          - name: work
-            mountPath: /work
-          - name: k8s-argocd-apps-reload-config-volume
-            mountPath: /k8s-argocd-apps-reload-config
-          env:
-            - name: SERVICE_NAMES
-              valueFrom:
-                configMapKeyRef:
-                  name: k8s-argocd-apps-reload-config
-                  key: service_to_reload
-            - name: DC_NUMBER
-              valueFrom:
-                configMapKeyRef:
-                  name: k8s-argocd-apps-reload-config
-                  key: dc_number
-            - name: ENV_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: k8s-argocd-apps-reload-config
-                  key: env_name 
-      volumes:
-        - configMap:
-            name: k8s-argocd-apps-reload-config
-          name: k8s-argocd-apps-reload-config-volume
-        - name: work
-          emptyDir: {}                 
+          # volumeMounts:
+          # - name: work
+          #   mountPath: /work
+          # - name: k8s-argocd-apps-reload-config-volume
+          #   mountPath: /k8s-argocd-apps-reload-config
+          # env:
+          #   - name: SERVICE_NAMES
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: k8s-argocd-apps-reload-config
+          #         key: service_to_reload
+          #   - name: DC_NUMBER
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: k8s-argocd-apps-reload-config
+          #         key: dc_number
+          #   - name: ENV_NAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: k8s-argocd-apps-reload-config
+          #         key: env_name 
+      # volumes:
+      #   - configMap:
+      #       name: k8s-argocd-apps-reload-config
+      #     name: k8s-argocd-apps-reload-config-volume
+      #   - name: work
+      #     emptyDir: {}                 
           
