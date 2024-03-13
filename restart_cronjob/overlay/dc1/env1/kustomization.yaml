@@ -9,11 +9,8 @@ patchesStrategicMerge:
   - configmap123.yaml
 configMapGenerator:
   - name: k8s-argocd-apps-reload-config
-    behavior: merge  
-# generatorOptions:
-#   annotations:
-#     argocd.argoproj.io/compare-options: IgnoreExtraneous
-#     argocd.argoproj.io/sync-options: Prune=false      
+    files:
+    - k8s-argocd-apps-reload-config   
 images:
 - name: k8s-argocd-apps-reload
   newName: priyadarshee2019/python_kubectl
