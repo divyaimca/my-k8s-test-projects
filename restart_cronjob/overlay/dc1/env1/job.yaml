@@ -10,7 +10,7 @@ spec:
         image: priyadarshee2019/python_kubectl:v4.0
         env:
         - name: SERVICE_NAMES
-          value: nginx-deployment,k8s-web-app2
+          value: nginx-deployment,k8s-web-app2,k8s-web-app3,k8s-web-app4
         - name: ENV_ID
           value: dc007
         - name: ENV_TYPE
