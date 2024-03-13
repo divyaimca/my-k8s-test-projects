@@ -11,4 +11,4 @@ metadata:
 data:
   dc_number: dc99
   env_name: production
-  service_to_reload: nginx-deployment,k8s-web-app2,k8s-web-app3,k8s-web-app4,k8s-web-app5
+  service_to_reload: nginx-deployment,k8s-web-app2,k8s-web-app3,k8s-web-app4
