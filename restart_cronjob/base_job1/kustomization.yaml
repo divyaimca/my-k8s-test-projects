@@ -9,4 +9,4 @@ resources:
 images:
 - name: k8s-argocd-apps-reload
   newName: priyadarshee2019/python_kubectl
-  newTag: v2.0  
+  newTag: v3.0  
