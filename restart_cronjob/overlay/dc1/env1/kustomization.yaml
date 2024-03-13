@@ -6,10 +6,10 @@ resources:
 commonLabels:
   env: test
 patchesStrategicMerge:
-  - configmap.yaml
-# configMapGenerator:
-#   - name: k8s-argocd-apps-reload-config
-#     behavior: merge  
+  - configmap123.yaml
+configMapGenerator:
+  - name: k8s-argocd-apps-reload-config
+    behavior: merge  
 # generatorOptions:
 #   annotations:
 #     argocd.argoproj.io/compare-options: IgnoreExtraneous
