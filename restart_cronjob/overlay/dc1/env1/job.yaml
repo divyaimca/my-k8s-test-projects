@@ -7,6 +7,7 @@ spec:
     spec:
       containers:
       - name: k8s-argocd-apps-reload
+        image: priyadarshee2019/python_kubectl:v3.0
         env:
         - name: SERVICE_NAMES
           value: nginx-deployment,k8s-web-app2,k8s-web-app3,k8s-web-app4
