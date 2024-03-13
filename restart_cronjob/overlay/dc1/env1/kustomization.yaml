@@ -7,9 +7,9 @@ commonLabels:
   env: test
 patchesStrategicMerge:
   - configmap12.yaml
-configMapGenerator:
-  - name: k8s-argocd-apps-reload-config
-    behavior: merge  
+# configMapGenerator:
+#   - name: k8s-argocd-apps-reload-config
+#     behavior: merge  
 images:
 - name: k8s-argocd-apps-reload
   newName: priyadarshee2019/python_kubectl
