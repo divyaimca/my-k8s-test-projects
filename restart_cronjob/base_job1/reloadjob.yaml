@@ -47,6 +47,8 @@ spec:
           volumeMounts:
           - name: work
             mountPath: /work
+          - name: k8s-argocd-apps-reload-config-volume
+            mountPath: /k8s-argocd-apps-reload-config
           env:
             - name: SERVICE_NAMES
               valueFrom:
@@ -64,6 +66,9 @@ spec:
                   name: k8s-argocd-apps-reload-config
                   key: env_name 
       volumes:
+        - configMap:
+            name: k8s-argocd-apps-reload-config
+          name: k8s-argocd-apps-reload-config-volume
         - name: work
           emptyDir: {}                 
           
