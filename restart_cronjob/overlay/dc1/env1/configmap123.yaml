@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: k8s-argocd-apps-reload-config
-data:
-  dc_number: dc99
-  env_name: production
-  service_to_reload: nginx-deployment,k8s-web-app2
