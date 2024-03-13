@@ -6,7 +6,7 @@ resources:
 commonLabels:
   env: test
 patchesStrategicMerge:
-  - configmap123.yaml
+  - configmap.yaml
 # configMapGenerator:
 #   - name: k8s-argocd-apps-reload-config
 #     behavior: merge  
