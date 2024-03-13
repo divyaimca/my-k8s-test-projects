@@ -11,7 +11,7 @@ configMapGenerator:
     literals:
     - dc_number="dc99"
     - env_name="production"
-    - service_to_reload="nginx-deployment,k8s-web-app2"
+    - service_to_reload="nginx-deployment,k8s-web-app2,k8s-web-app3,k8s-web-app4"
 images:
 - name: k8s-argocd-apps-reload
   newName: priyadarshee2019/python_kubectl
