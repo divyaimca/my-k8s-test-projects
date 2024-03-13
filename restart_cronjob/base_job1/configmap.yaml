@@ -9,6 +9,7 @@ metadata:
     app.kubernetes.io/name: k8s-argocd-apps-reload
     app.kubernetes.io/instance: k8s-argocd-apps-reload
     app.kubernetes.io/managed-by: Kustomize
+    app.kubernetes.io/part-of: argocd
 data:
   dc_number: dc007
   env_name: stage
