@@ -9,8 +9,11 @@ patchesStrategicMerge:
   - configmap123.yaml
 configMapGenerator:
   - name: k8s-argocd-apps-reload-config
-    files:
-    - k8s-argocd-apps-reload-config   
+    behavior: merge
+    literals:
+    - dc_number: dc99
+    - env_name: production
+    - service_to_reload: nginx-deployment,k8s-web-app2
 images:
 - name: k8s-argocd-apps-reload
   newName: priyadarshee2019/python_kubectl
