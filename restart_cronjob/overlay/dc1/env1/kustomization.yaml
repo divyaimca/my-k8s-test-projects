@@ -3,6 +3,10 @@ kind: Kustomization
 namespace: k8s-argocd-apps-reload
 resources:
   - ../../../base_job1
+generatorOptions:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Prune=false  
 commonLabels:
   env: test
 patchesStrategicMerge:
