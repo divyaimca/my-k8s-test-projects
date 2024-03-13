@@ -13,7 +13,7 @@ configMapGenerator:
 generatorOptions:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: Prune=false      
+#    argocd.argoproj.io/sync-options: Prune=false      
 images:
 - name: k8s-argocd-apps-reload
   newName: priyadarshee2019/python_kubectl
