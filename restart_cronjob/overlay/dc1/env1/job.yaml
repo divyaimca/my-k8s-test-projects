@@ -8,9 +8,8 @@ spec:
       containers:
       - name: k8s-argocd-apps-reload
         env:
-        env:
         - name: SERVICE_NAMES
-          value: prod
+          value: nginx-deployment,k8s-web-app2,k8s-web-app3,k8s-web-app4
         - name: ENV_ID
           value: dc007
         - name: ENV_TYPE
