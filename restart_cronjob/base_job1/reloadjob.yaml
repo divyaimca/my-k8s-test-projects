@@ -11,12 +11,11 @@ metadata:
 spec:
   #successfulJobsHistoryLimit: 2
   #failedJobsHistoryLimit: 2
-  ttlSecondsAfterFinished: 300
+  ttlSecondsAfterFinished: 600
   #concurrencyPolicy: Forbid
   #startingDeadlineSeconds: 10
   template:
     spec:
-      activeDeadlineSeconds: 300
       serviceAccountName: k8s-argocd-apps-reload
       securityContext:
         fsGroup: 2000
